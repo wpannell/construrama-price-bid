@@ -2,8 +2,8 @@ applications:
 - path: .
   memory: 1024M
   instances: 1
-  domain: cloudstudio.mybluemix.net
-  name: leia-web-prod
-  host: leia-web-prod
+  domain: mybluemix.net
+  name: construrama-price-bid
+  host: construrama-price-bid
   disk_quota: 1024M
   command: npm start
