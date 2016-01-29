@@ -1,7 +1,7 @@
 {
   "name": "construrama-price-bid",
   "version": "0.0.1",
-  "description": "MVP for the IBM Way",
+  "description": "MVP for the Cemex Engagement",
   "main": "index.js",
   "scripts": {
     "start": "node server",

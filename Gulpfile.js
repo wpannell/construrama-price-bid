@@ -8,13 +8,13 @@ var todo = require('gulp-todoist');
 var webpack = require('webpack-stream');
 
 var paths = {
-  entry: 'client/app/app.js',
   app: ['client/app/**/*.{js,styl,html}', 'client/styles/**/*.styl'],
+  dest: 'dist',
+  entry: 'client/app/app.js',
+  html: ['client/index.html', 'client/app/**/*.html'],
   js: 'client/app/**/*!(.spec.js).js',
   styl: ['client/app/**/*.styl', 'client/style/**/*.styl'],
-  toCopy: ['client/index.html', 'client/**/*.{jpg,png}'],
-  html: ['client/index.html', 'client/app/**/*.html'],
-  dest: 'dist'
+  toCopy: ['client/index.html', 'client/**/*.{jpg,png}']
 };
 
 
@@ -25,7 +25,7 @@ gulp.task('build', ['todo'], function() {
 });
 
 gulp.task('clean', function() {
-  return del(['dist/**/*.*', 'generated']);
+  return del(['dist/**/*.*', 'dist/img', 'generated']);
 });
 
 gulp.task('copy', function() {
