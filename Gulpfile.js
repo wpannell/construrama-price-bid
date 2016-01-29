@@ -3,7 +3,6 @@ var del = require('del');
 var gulp = require('gulp');
 var eslint = require('gulp-eslint');
 var listGulpTasks = require('gulp-task-listing');
-var stylish = require('jshint-stylish');
 var sync = require('run-sequence');
 var todo = require('gulp-todoist');
 var webpack = require('webpack-stream');
@@ -37,7 +36,8 @@ gulp.task('copy', function() {
 gulp.task('lint', function() {
   return gulp.src('client/app/**/*.js')
     .pipe(eslint({'useEslintrc': true}))
-    .pipe(eslint.formatEach('stylish', process.stderr));
+    .pipe(eslint.formatEach('stylish', process.stderr))
+    .pipe( eslint.failAfterError() );
 });
 
 gulp.task('ls', listGulpTasks);
