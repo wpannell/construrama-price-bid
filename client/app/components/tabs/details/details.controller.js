@@ -1,5 +1,4 @@
-function DetailsController($scope) {
-}
+let DetailsController = () => {};
 
 DetailsController.$inject = ['$scope'];
 

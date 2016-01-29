@@ -1,12 +1,12 @@
-function PopupController($scope, $mdDialog) {
-  $scope.cancel = function() {
+let PopupController = ($scope, $mdDialog) => {
+  $scope.cancel = () => {
     $mdDialog.cancel();
   };
 
-  $scope.answerClicked = function answerClicked(answer) {
+  $scope.answerClicked = (answer) => {
     $mdDialog.hide(answer);
   };
-}
+};
 
 PopupController.$inject = ['$scope', '$mdDialog'];
 

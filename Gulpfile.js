@@ -1,7 +1,7 @@
 var browser = require('browser-sync');
 var del = require('del');
 var gulp = require('gulp');
-var jshint = require('gulp-jshint');
+var eslint = require('gulp-eslint');
 var listGulpTasks = require('gulp-task-listing');
 var stylish = require('jshint-stylish');
 var sync = require('run-sequence');
@@ -36,8 +36,8 @@ gulp.task('copy', function() {
 
 gulp.task('lint', function() {
   return gulp.src('client/app/**/*.js')
-    .pipe(jshint())
-    .pipe(jshint.reporter(stylish));
+    .pipe(eslint({'useEslintrc': true}))
+    .pipe(eslint.formatEach('stylish', process.stderr));
 });
 
 gulp.task('ls', listGulpTasks);

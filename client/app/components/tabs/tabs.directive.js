@@ -7,7 +7,7 @@ export const tabsDirective = ()=> {
     template,
     controller,
     restrict: 'E',
-    scope: {},
-    replace: true
+    replace: true,
+    scope: {}
   };
 };

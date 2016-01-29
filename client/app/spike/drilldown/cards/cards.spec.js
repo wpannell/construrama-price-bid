@@ -1,17 +1,19 @@
 import 'script!jquery/dist/jquery';
+import angular from 'angular';
+
 import {cards} from './cards';
 
 describe('Cards page', () => {
-  let $compile;
-  let element;
-
+  let buildTemplate = () => {
+    return angular.element('<cards></cards>');
+  };
 
   beforeEach(window.module('ui.router'));
   beforeEach(window.module(cards.name));
 
-  beforeEach(inject(($rootScope, $compile) => {
+  beforeEach(window.inject(($rootScope, $compile) => {
     let $scope = $rootScope.$new();
-    element = $compile(buildTemplate())($scope);
+    $compile(buildTemplate())($scope);
     $scope.$digest();
   }));
 
@@ -19,8 +21,4 @@ describe('Cards page', () => {
     it('a title', () => {
     });
   });
-
-  var buildTemplate = () => {
-    return angular.element("<cards></cards>");
-  };
 });

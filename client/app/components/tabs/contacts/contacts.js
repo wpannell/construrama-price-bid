@@ -11,7 +11,7 @@ export const contacts = angular.module('contacts', [
   ngMaterial
 ])
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config( ($stateProvider) => {
   $stateProvider.
       state('main.contacts', {
         url: '/contacts',

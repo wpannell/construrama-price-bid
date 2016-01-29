@@ -12,7 +12,7 @@ export const gauge = angular.module('gauge', [
   ngMaterial
 ])
 
-.config(function($stateProvider) {
+.config( ($stateProvider) => {
   $stateProvider.state('gauge', {
     url: '/gauge',
     template: '<gauge></gauge>'

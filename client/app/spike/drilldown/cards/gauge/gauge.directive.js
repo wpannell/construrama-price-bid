@@ -10,13 +10,14 @@ export const gaugeDirective = ()=> {
     template,
     controller,
     restrict: 'E',
+    replace: true,
+
     scope: {
       boundingbox: '=',
       x: '=',
       y: '=',
       r: '=',
-      percent: '=',
-    },
-    replace: true
+      percent: '='
+    }
   };
 };

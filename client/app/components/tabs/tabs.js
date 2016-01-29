@@ -1,11 +1,11 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 
-import {home} from './home/home'
-import {approach} from './approach/approach'
-import {details} from './details/details'
-import {contacts} from './contacts/contacts'
-import {drilldown} from '../../spike/drilldown/drilldown'
+import {home} from './home/home';
+import {approach} from './approach/approach';
+import {details} from './details/details';
+import {contacts} from './contacts/contacts';
+import {drilldown} from '../../spike/drilldown/drilldown';
 import {tabsDirective} from './tabs.directive.js';
 
 import ngAnimate from 'angular-animate';
@@ -25,7 +25,7 @@ export const tabs = angular.module('main', [
   drilldown.name
 ])
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config( ($stateProvider, $urlRouterProvider) => {
   $urlRouterProvider
       .when('/', '/tabs/home')
       .otherwise('/tabs/home');

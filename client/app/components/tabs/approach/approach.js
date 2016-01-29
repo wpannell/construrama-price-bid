@@ -11,7 +11,7 @@ export const approach = angular.module('approach', [
   ngMaterial
 ])
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config( ($stateProvider) => {
   $stateProvider.
       state('main.approach', {
         url: '/approach',

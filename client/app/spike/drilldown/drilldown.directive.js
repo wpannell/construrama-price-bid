@@ -7,7 +7,7 @@ export const drilldownDirective = ()=> {
     template,
     controller,
     restrict: 'E',
-    scope: {},
-    replace: true
+    replace: true,
+    scope: {}
   };
 };

@@ -1,5 +1,5 @@
 {
-  "name": "ibm-way-mobile",
+  "name": "construrama-price-bid",
   "version": "0.0.1",
   "description": "MVP for the IBM Way",
   "main": "index.js",
@@ -51,9 +51,14 @@
   },
   "devDependencies": {
     "angular-mocks": "1.4.8",
+    "babel-eslint": "^4.1.6",
     "chai": "3.1.0",
+    "eslint": "^1.10.3",
+    "eslint-plugin-mocha": "^1.1.0",
+    "eslint-plugin-react": "^3.16.1",
     "growl": "1.8.1",
     "growly": "1.2.0",
+    "gulp-eslint": "^1.1.1",
     "karma": "0.13.19",
     "karma-chai": "0.1.0",
     "karma-chrome-launcher": "0.2.2",

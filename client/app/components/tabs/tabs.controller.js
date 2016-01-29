@@ -1,8 +1,8 @@
-function TabsController($scope) {
-  $scope.$on('$stateChangeSuccess', function (event, toState) {
+let TabsController = $scope => {
+  $scope.$on('$stateChangeSuccess', (event, toState) => {
     $scope.selectedTab = toState.selectedTab;
   });
-}
+};
 
 TabsController.$inject = ['$scope'];
 

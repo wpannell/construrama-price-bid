@@ -1,17 +1,19 @@
 import 'script!jquery/dist/jquery';
+import angular from 'angular';
+
 import {drilldown} from './drilldown';
 
 describe('Drilldown page', () => {
-  let $compile;
-  let element;
-
+  let buildTemplate = () => {
+    return angular.element('<drilldown></drilldown>');
+  };
 
   beforeEach(window.module('ui.router'));
   beforeEach(window.module(drilldown.name));
 
-  beforeEach(inject(($rootScope, $compile) => {
+  beforeEach(window.inject(($rootScope, $compile) => {
     let $scope = $rootScope.$new();
-    element = $compile(buildTemplate())($scope);
+    $compile(buildTemplate())($scope);
     $scope.$digest();
   }));
 
@@ -20,7 +22,4 @@ describe('Drilldown page', () => {
     });
   });
 
-  var buildTemplate = () => {
-    return angular.element("<drilldown></drilldown>");
-  };
 });

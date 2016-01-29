@@ -1,4 +1,4 @@
-var ContactsController = ($scope) => undefined;
+let ContactsController = () => {};
 
 ContactsController.$inject = ['$scope'];
 

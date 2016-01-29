@@ -1,5 +1,5 @@
 import angular from 'angular';
-import {cards} from './cards/cards'
+import {cards} from './cards/cards';
 import {drilldownDirective} from './drilldown.directive.js';
 
 import ngAnimate from 'angular-animate';
@@ -13,7 +13,7 @@ export const drilldown = angular.module('drilldown', [
   cards.name
 ])
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config( ($stateProvider) => {
   $stateProvider.
       state('main.drilldown', {
         url: '/drilldown',

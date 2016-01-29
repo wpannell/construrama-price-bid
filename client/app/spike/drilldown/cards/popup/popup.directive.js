@@ -9,7 +9,7 @@ export const popupDirective = ()=> {
     template,
     controller,
     restrict: 'E',
-    scope: {},
-    replace: true
+    replace: true,
+    scope: {}
   };
 };

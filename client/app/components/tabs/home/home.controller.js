@@ -1,5 +1,4 @@
-function HomeController($scope) {
-}
+let HomeController = () => {};
 
 HomeController.$inject = ['$scope'];
 

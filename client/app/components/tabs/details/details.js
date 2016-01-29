@@ -11,7 +11,7 @@ export const details = angular.module('details', [
   ngMaterial
 ])
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config( ($stateProvider) => {
   $stateProvider.
       state('main.details', {
         url: '/details',

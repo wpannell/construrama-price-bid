@@ -1,6 +1,6 @@
 import angular from 'angular';
 
-import {gauge} from './gauge/gauge'
+import {gauge} from './gauge/gauge';
 import {cardsDirective} from './cards.directive.js';
 
 import ngAnimate from 'angular-animate';
@@ -15,7 +15,7 @@ export const cards = angular.module('cards', [
   gauge.name
 ])
 
-.config(function($stateProvider) {
+.config( ($stateProvider) => {
   $stateProvider.state('cards', {
     url: '/cards',
     template: '<cards></cards>'

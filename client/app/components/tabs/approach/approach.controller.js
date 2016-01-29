@@ -1,4 +1,4 @@
-var ApproachController = ($scope) => undefined;
+let ApproachController = () => {};
 
 ApproachController.$inject = ['$scope'];
 

@@ -1,15 +1,23 @@
 import 'script!jquery/dist/jquery';
+import angular from 'angular';
+
+import chai from 'chai';
+let expect = chai.expect;
+
 import {home} from './home';
 
 describe('Home page', () => {
-  let $compile;
   let element;
+  let $ = window.$;
 
+  let buildTemplate = () => {
+    return angular.element('<home></home>');
+  };
 
   beforeEach(window.module('ui.router'));
   beforeEach(window.module(home.name));
 
-  beforeEach(inject(($rootScope, $compile) => {
+  beforeEach(window.inject(($rootScope, $compile) => {
     let $scope = $rootScope.$new();
     element = $compile(buildTemplate())($scope);
     $scope.$digest();
@@ -35,41 +43,41 @@ describe('Home page', () => {
       describe('a first bullet which contains', () => {
         it('lorem ipsum', () => {
           expect($(element).find('.home-section1').text()).to.contain(
-              'Cisco performed an initial accounting policy assessment that')
+              'Cisco performed an initial accounting policy assessment that');
         });
 
         it('and more lorem ipsum', () => {
           expect($(element).find('.home-section1').text()).to.contain(
-              'identified 32 key accounting policy impact areas')
+              'identified 32 key accounting policy impact areas');
         });
       });
 
       describe('a second bullet which contains ', () => {
         it('lorem ipsum', () => {
           expect($(element).find('.home-section1').text()).to.contain(
-              'Cisco, along with E&Y, has completed evaluation of the 32 impact')
+              'Cisco, along with E&Y, has completed evaluation of the 32 impact');
         });
 
         it('and more lorem ipsum', () => {
           expect($(element).find('.home-section1').text()).to.contain(
-              'areas from a business policy perspective')
+              'areas from a business policy perspective');
         });
       });
 
       describe('and a third bullet which contains', () => {
         it('lorem ipsum', () => {
           expect($(element).find('.home-section1').text()).to.contain(
-              'Cisco needs to now begin work to evaluate system impacts and make')
+              'Cisco needs to now begin work to evaluate system impacts and make');
         });
 
         it('more lorem ipsum', () => {
           expect($(element).find('.home-section1').text()).to.contain(
-              'required system changes to implement ASC 606, that would allow Cisco')
+              'required system changes to implement ASC 606, that would allow Cisco');
         });
 
         it('and yet more lorem ipsum', () => {
           expect($(element).find('.home-section1').text()).to.contain(
-              'to be compliant with the new Standard by July-2018')
+              'to be compliant with the new Standard by July-2018');
         });
       });
     });
@@ -78,32 +86,28 @@ describe('Home page', () => {
       describe('a first bullet which contains', () => {
         it('lorem ipsum', () => {
           expect($(element).find('.home-section2').text()).to.contain(
-              'Showcase Accenture’s proposed solution approach, assets and')
+              'Showcase Accenture’s proposed solution approach, assets and');
         });
 
         it('and more lorem ipsum', () => {
           expect($(element).find('.home-section2').text()).to.contain(
-              'capabilities')
+              'capabilities');
         });
       });
 
       describe('a second bullet which contains', () => {
         it('lorem ipsum', () => {
           expect($(element).find('.home-section2').text()).to.contain(
-              'Exhibit Accenture’s insights into Cisco business')
+              'Exhibit Accenture’s insights into Cisco business');
         });
       });
 
       describe('a third bullet which contains', () => {
         it('lorem ipsum', () => {
           expect($(element).find('.home-section2').text()).to.contain(
-              'Placeholder for the mvp vision statement')
+              'Placeholder for the mvp vision statement');
         });
       });
     });
   });
-
-  var buildTemplate = () => {
-    return angular.element("<home></home>");
-  };
 });

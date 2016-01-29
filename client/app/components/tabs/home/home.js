@@ -11,7 +11,7 @@ export const home = angular.module('home', [
   ngMaterial
 ])
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config( ($stateProvider) => {
   $stateProvider.
       state('main.home', {
         url: '/home',

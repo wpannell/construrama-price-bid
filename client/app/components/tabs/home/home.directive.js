@@ -7,7 +7,7 @@ export const homeDirective = ()=> {
     template,
     controller,
     restrict: 'E',
+    replace: true,
     scope: {},
-    replace: true
   };
 };
