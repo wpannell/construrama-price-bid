@@ -8,7 +8,8 @@
     "dev": "node_modules/.bin/gulp",
     "dist": "node_modules/.bin/gulp dist",
     "lint": "node_modules/.bin/gulp lint",
-    "test": "node_modules/karma/bin/karma start karma.conf.dev.js",
+    "spec": "node_modules/karma/bin/karma start karma.conf.dev.js",
+    "lint:spec": "npm run lint && npm run spec",
     "test:sauce-labs": "mkdir -p generated && node_modules/karma/bin/karma start"
   },
   "engines": {
