@@ -52,49 +52,49 @@ stages:
           npm run spec
         #enable_tests: true
         #test_file_pattern: '*.xml, test/*.xml'
-#  - name: Merge
-#      inputs:
-#        - type: job
-#          stage: 'Package'
-#          job: NPM
-#      triggers:
-#        - type: stage
-#      jobs:
-#        - name: Merge with Integration
-#          type: builder
-#          build_type: npm
-#          script: |-
-#            #!/bin/bash
-#            mv ./dev_modules .
-#            rm -rf ./dev_modules
-#
-#            git checkout integration
-#            git pull origin integration
-#            git merge master --no-ff --log
-#            git push origin integration
-#  - name: Deploy to Dev
-#    inputs:
-#      - type: job
-#        stage: 'Package'
-#        job: NPM
-#    triggers:
-#      - type: stage
-#    properties:
-#      - name: APP_NAME
-#        value: '${CF_APP}'
-#        type: text
-#    jobs:
-#      - name: Deploy
-#        type: deployer
-#        target:
-#          url: '${CF_TARGET_URL}'
-#          organization: '${CF_ORGANIZATION}'
-#          space: '${CF_SPACE}'
-#          application: '${CF_APP}'
-#        script: |-
-#          #!/bin/bash
-#          rm -rf ./dev_modules
-#
-#          cf push "${CF_APP}-dev-blue" -n "${CF_APP}-dev"
-#          cf delete "${CF_APP}-dev-green" --f
-#          cf rename "${CF_APP}-dev-blue" "${CF_APP}-dev-green"
+  - name: Merge
+      inputs:
+        - type: job
+          stage: Package
+          job: NPM
+      triggers:
+        - type: stage
+      jobs:
+        - name: Merge with Integration
+          type: builder
+          build_type: npm
+          script: |-
+            #!/bin/bash
+            mv ./dev_modules .
+            rm -rf ./dev_modules
+
+            git checkout integration
+            git pull origin integration
+            git merge master --no-ff --log
+            git push origin integration
+  - name: Deploy to Dev
+    inputs:
+      - type: job
+        stage: Package
+        job: NPM
+    triggers:
+      - type: stage
+    properties:
+      - name: APP_NAME
+        value: '${CF_APP}'
+        type: text
+    jobs:
+      - name: Deploy
+        type: deployer
+        target:
+          url: '${CF_TARGET_URL}'
+          organization: '${CF_ORGANIZATION}'
+          space: '${CF_SPACE}'
+          application: '${CF_APP}'
+        script: |-
+          #!/bin/bash
+          rm -rf ./dev_modules
+
+          cf push "${CF_APP}-dev-blue" -n "${CF_APP}-dev"
+          cf delete "${CF_APP}-dev-green" --f
+          cf rename "${CF_APP}-dev-blue" "${CF_APP}-dev-green"
