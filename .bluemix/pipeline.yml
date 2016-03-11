@@ -3,7 +3,7 @@ stages:
   - name: Package
     inputs:
       - type: git
-        branch: dev
+        branch: master
     triggers:
       - type: commit
     jobs:
@@ -12,9 +12,9 @@ stages:
         build_type: npm
         script: |-
           #!/bin/bash
-          git branch master
-          git fetch origin master
-          git merge master --ff-only
+          git branch integration
+          git fetch origin integration
+          git merge integration --ff-only
 
           export PATH=/opt/IBM/node-v4.2/bin:./node_modules/.bin:$PATH
           npm i
@@ -60,7 +60,7 @@ stages:
       triggers:
         - type: stage
       jobs:
-        - name: Merge with Master
+        - name: Merge with Integration
           type: builder
           build_type: npm
           script: |-
@@ -68,10 +68,10 @@ stages:
             mv ./dev_modules .
             rm -rf ./dev_modules
 
-            git checkout master
-            git pull origin master
-            git merge dev --no-ff --log
-            git push origin master
+            git checkout integration
+            git pull origin integration
+            git merge master --no-ff --log
+            git push origin integration
   - name: Deploy to Dev
     inputs:
       - type: job
