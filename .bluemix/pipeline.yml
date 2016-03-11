@@ -52,27 +52,25 @@ stages:
           npm run spec
         #enable_tests: true
         #test_file_pattern: '*.xml, test/*.xml'
-
   - name: Build
-      inputs:
-        - type: job
-          stage: Package
-          job: NPM
-      triggers:
-        - type: stage
-      jobs:
-        - name: merge
-          type: builder
-          build_type: shell
-          script: |-
-            #!/bin/bash
-            mv ./dev_modules .
-            rm -rf ./dev_modules
-
-            git checkout integration
-            git pull origin integration
-            git merge master --no-ff --log
-            git push origin integration
+    inputs:
+      - type: job
+        stage: Package
+        job: NPM
+    triggers:
+      - type: stage
+    jobs:
+      - name: merge
+        type: builder
+        build_type: shell
+        script: |-
+          #!/bin/bash
+          mv ./dev_modules .
+          rm -rf ./dev_modules
+          git checkout integration
+          git pull origin integration
+          git merge master --no-ff --log
+          git push origin integration
 #  - name: Deploy to Dev
 #    inputs:
 #      - type: job
