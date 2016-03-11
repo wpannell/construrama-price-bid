@@ -22,36 +22,36 @@ stages:
 
           mkdir ./dev_modules
           mv ./node_modules ./dev_modules
-#  - name: 'Test'
-#    inputs:
-#      - type: job
-#        stage: 'Package'
-#        job: NPM
-#    triggers:
-#      - type: stage
-#    properties:
-#      - name: APP_NAME
-#        value: '${CF_APP}'
-#        type: text
-#    jobs:
-#      - name: Lint
-#        type: tester
-#        script: |-
-#          #!/bin/bash
-#          mv ./dev_modules .
-#
-#          npm run lint
-#        #enable_tests: false
-#        #test_file_pattern: 'test/*.xml'
-#      - name: Specs
-#        type: tester
-#        script: |-
-#          #!/bin/bash
-#          mv ./dev_modules .
-#
-#          npm run spec
-#        #enable_tests: true
-#        #test_file_pattern: '*.xml, test/*.xml'
+  - name: 'Test'
+    inputs:
+      - type: job
+        stage: Package
+        job: NPM
+    triggers:
+      - type: stage
+    properties:
+      - name: APP_NAME
+        value: '${CF_APP}'
+        type: text
+    jobs:
+      - name: Lint
+        type: tester
+        script: |-
+          #!/bin/bash
+          mv ./dev_modules .
+
+          npm run lint
+        #enable_tests: false
+        #test_file_pattern: 'test/*.xml'
+      - name: Specs
+        type: tester
+        script: |-
+          #!/bin/bash
+          mv ./dev_modules .
+
+          npm run spec
+        #enable_tests: true
+        #test_file_pattern: '*.xml, test/*.xml'
 #  - name: Merge
 #      inputs:
 #        - type: job
