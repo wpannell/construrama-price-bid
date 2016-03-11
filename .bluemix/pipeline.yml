@@ -3,7 +3,7 @@ stages:
   - name: Package
     inputs:
       - type: git
-        branch: master
+        branch: dev
     triggers:
       - type: commit
     jobs:
@@ -22,56 +22,56 @@ stages:
 
           mkdir ./dev_modules
           mv ./node_modules ./dev_modules
-#  - name: 'Test'
-#    inputs:
-#      - type: job
-#        stage: Build
-#        job: NPM
-#    triggers:
-#      - type: stage
-#    properties:
-#      - name: APP_NAME
-#        value: '${CF_APP}'
-#        type: text
-#    jobs:
-#      - name: Lint
-#        type: tester
-#        script: |-
-#          #!/bin/bash
-#          mv ./dev_modules .
-#
-#          npm run lint
-#        #enable_tests: false
-#        #test_file_pattern: 'test/*.xml'
-#      - name: Specs
-#        type: tester
-#        script: |-
-#          #!/bin/bash
-#          mv ./dev_modules .
-#
-#          npm run spec
-#        #enable_tests: true
-#        #test_file_pattern: '*.xml, test/*.xml'
-#  - name: Merge
-#      inputs:
-#        - type: job
-#          stage: Build
-#          job: NPM
-#      triggers:
-#        - type: stage
-#      jobs:
-#        - name: Merge with Master
-#          type: builder
-#          build_type: npm
-#          script: |-
-#            #!/bin/bash
-#            mv ./dev_modules .
-#            rm -rf ./dev_modules
-#
-#            git checkout master
-#            git pull origin master
-#            git merge temp --no-ff --log
-#            git push origin master
+  - name: 'Test'
+    inputs:
+      - type: job
+        stage: 'Package'
+        job: NPM
+    triggers:
+      - type: stage
+    properties:
+      - name: APP_NAME
+        value: '${CF_APP}'
+        type: text
+    jobs:
+      - name: Lint
+        type: tester
+        script: |-
+          #!/bin/bash
+          mv ./dev_modules .
+
+          npm run lint
+        #enable_tests: false
+        #test_file_pattern: 'test/*.xml'
+      - name: Specs
+        type: tester
+        script: |-
+          #!/bin/bash
+          mv ./dev_modules .
+
+          npm run spec
+        #enable_tests: true
+        #test_file_pattern: '*.xml, test/*.xml'
+  - name: Merge
+      inputs:
+        - type: job
+          stage: 'Package'
+          job: NPM
+      triggers:
+        - type: stage
+      jobs:
+        - name: Merge with Master
+          type: builder
+          build_type: npm
+          script: |-
+            #!/bin/bash
+            mv ./dev_modules .
+            rm -rf ./dev_modules
+
+            git checkout master
+            git pull origin master
+            git merge dev --no-ff --log
+            git push origin master
   - name: Deploy to Dev
     inputs:
       - type: job
